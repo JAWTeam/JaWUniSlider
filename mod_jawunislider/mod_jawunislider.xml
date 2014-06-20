@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="2.5.0" client="site" method="upgrade">
+    <name>J@W Universal Slider</name>
+    <author>Pshentsov Vadim</author>
+    <authorEmail>pshentsoff@yandex.ru</authorEmail>
+    <authorUrl>http://pshentsoff.ru</authorUrl>
+    <creationDate>19.06.2014</creationDate>
+    <version>0.0.1-dev</version>
+    <copyright>Copyright (C) 2014 All rights reserved.</copyright>
+    <license>GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html</license>
+    <description>
+        <![CDATA[
+        ]]>
+    </description>
+
+    <files>
+        <filename module="mod_jawunislider">mod_jawunislider.php</filename>
+        <filename>helper.php</filename>
+        <filename>index.html</filename>
+        <folder>tmpl</folder>
+        <folder>assets</folder>
+        <folder>languages</folder>
+    </files>
+
+    <languages>
+        <language tag="ru-RU">ru-RU/ru-RU.mod_jawunislider.ini</language>
+        <language tag="en-GB">en-GB.mod_jawunislider.ini</language>
+    </languages>
+
+    <config>
+        <fields name="params">
+            <fieldset name="basic">
+                <field
+                        name="layout"
+                        type="modulelayout"
+                        label="JFIELD_ALT_LAYOUT_LABEL"
+                        description="JFIELD_ALT_MODULE_LAYOUT_DESC" />
+
+                <field
+                        name="images_path"
+                        type="folderlist"
+                        default=""
+                        label="Select a folder images"
+                        description="..joomla/images/.."
+                        directory="images"
+                        hide_none="true"
+                        hide_default="true"
+                        size="5"
+                        multiple="multiple"/>
+
+            </fieldset>
+        </fields>
+    </config>
+</extension>
