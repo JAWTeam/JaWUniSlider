@@ -19,9 +19,55 @@
 
 defined('_JEXEC') or die;
 
+jimport('joomla.filesystem.folder');
+
 class modJaWUniSliderHelper {
 
-    public function getSlides() {
+    public function getImagesPath($imagesPath, $filter = array('.png','.gif','.jpg')){
+
+        $slides = array();
+
+        if(!JFolder::exists($imagesPath)) {
+
+            $first = substr($imagesPath, 0, 1);
+            $ds = ($first == "\\" || $first == "/") ? '' : DS;
+            $rootPath = JPATH_ROOT.$ds.$imagesPath;
+
+            if(!JFolder::exists($rootPath)) {
+                return false;
+            }
+        } else {
+            $rootPath = $imagesPath;
+        }
+
+        // Prepare filter regular expression
+        if(!empty($filter)) {
+            $filter = str_replace('.', '\.', $filter);
+            $filter = str_replace('*', '.', $filter);
+            $filterReg = implode('|', $filter);
+        } else {
+            $filterReg = '.';
+        }
+
+        $files  = JFolder::files($rootPath, $filterReg);
+        if(!count($files)) return;
+
+        foreach($files as $fileName){
+            $slides[] = (object) array(
+                'path' => $imagesPath,
+                'rootPath' => $rootPath,
+                'fileName'	=> $fileName,
+                'image' => JURI::base().$imagesPath.$fileName,
+            );
+        }
+        return $slides;
+    }
+
+    public function prepareSlides(&$slides) {
+
+        foreach ($slides as $key => $slide) {
+            $slides[$key]->image = (strpos($slide->image, 'http://') === false) ? JURI::base() . $slide->image : $slide->image;
+        }
 
     }
 
