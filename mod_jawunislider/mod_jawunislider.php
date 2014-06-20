@@ -22,7 +22,17 @@ defined('_JEXEC') or die;
 defined('DS') or define('DS', DIRECTORY_SEPARATOR);
 require_once dirname(__FILE__) . DS.'helper.php';
 
-$imagesPath = $params->get('imagesPath', 'images'.DS.'stories');
+$slidesSource = $params->get('slidesSource', 'imagesPath');
+switch($slidesSource){
+    case 'imagesPath':
+    default: {
+        $imagesPath = $params->get('imagesPath', 'images'.DS.'stories');
+        $slides = modJaWUniSliderHelper::getImagesPath($imagesPath);
+        break;
+    }
+}
+
+modJaWUniSliderHelper::prepareSlides($slides);
 
 // display layout
 require JModuleHelper::getLayoutPath('mod_jawunislider', $params->get('layout', 'default'));
