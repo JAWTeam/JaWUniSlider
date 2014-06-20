@@ -12,7 +12,7 @@ J@W Universal Slider module for Joomla! for programmers. Minimum preset params. 
 
 ### Useful links:
 
-#### Version 0.0.1-dev
+#### Version 0.0.2-dev
 #### Last work version 0.0.1
 #### Last stable version 0.0.1
 

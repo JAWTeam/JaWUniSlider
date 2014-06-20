@@ -18,3 +18,11 @@
  */
 
 defined('_JEXEC') or die;
+
+$doc = JFactory::getDocument();
+$doc->addScript('modules/mod_jawunislider/assets/jquery.mobile.customized.min.js', 'text/javascript');
+$doc->addScript('modules/mod_jawunislider/assets/jquery.easing.1.3.js', 'text/javascript');
+$doc->addScript('modules/mod_jawunislider/assets/camera.js', 'text/javascript');
+$doc->addStyleSheet('modules/mod_jawunislider/assets/camera.css');
+
+$timthumb = JURI::base() . 'modules/mod_jawunislider/libs/timthumb.php?a=c&q=99&z=0';

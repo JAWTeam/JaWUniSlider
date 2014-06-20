@@ -19,7 +19,8 @@
 
 defined('_JEXEC') or die;
 
-require_once dirname(__FILE__) . '/helper.php';
+defined('DS') or define('DS', DIRECTORY_SEPARATOR);
+require_once dirname(__FILE__) . DS.'helper.php';
 
 // get params
 
