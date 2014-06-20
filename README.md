@@ -1,6 +1,6 @@
-## Title
+## JaWUniSlider
 
-Description
+J@W Universal Slider module for Joomla! for programmers. Minimum preset params. Maximum templates, java script and css flexibilities.
 
 -   Contributors: pshentsoff
 -   [Donate link](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=FGRFBSFEW5V3Y "Please, donate to support project")
