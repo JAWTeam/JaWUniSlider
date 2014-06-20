@@ -48,15 +48,29 @@ $doc->addScript('modules/mod_jawunislider/assets/jquery.mobile.customized.min.js
 $doc->addScript('modules/mod_jawunislider/assets/jquery.easing.1.3.js', 'text/javascript');
 $doc->addScript('modules/mod_jawunislider/assets/jawunislider.js', 'text/javascript');
 
+// load used slideshow
 switch($slideShow) {
-    case 'camera':
+    case 'camera': {}
     default: {
-        $doc->addScript('modules/mod_jawunislider/assets/camera.js', 'text/javascript');
-        $doc->addStyleSheet('modules/mod_jawunislider/assets/camera.css');
+    $doc->addScript('modules/mod_jawunislider/assets/camera.js', 'text/javascript');
+    $doc->addStyleSheet('modules/mod_jawunislider/assets/camera.css');
 
-        $slideShowWrapperClass = 'jaw-camera-slider';
-        $slideShowSliderClass = 'camera_wrap';
-        break;
+    // slideshow-dependent params
+    $loaderStyle		= $params->get('loaderStyle', 'pie');
+    $piePosition		= $params->get('piePosition', 'rightTop');
+    $barPosition		= $params->get('barPosition', 'bottom');
+    $barDirection		= $params->get('barDirection', 'leftToRight');
+    $fx					= $params->get('fx', 'random');
+    $navigation			= $params->get('navigation', 1);
+    $navigationHover	= $params->get('navigationHover', 0);
+    $playPause			= $params->get('playPause', 1);
+    $pagination			= $params->get('pagination', 0);
+    $transPeriod		= $params->get('transPeriod', 1500);
+
+    $slideShowWrapperClass = 'jaw-camera-slider';
+    $slideShowSliderClass = 'camera_wrap';
+
+    break;
     }
 }
 

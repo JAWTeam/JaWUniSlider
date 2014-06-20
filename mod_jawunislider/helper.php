@@ -57,6 +57,7 @@ class modJaWUniSliderHelper {
                 'path' => $imagesPath,
                 'rootPath' => $rootPath,
                 'fileName'	=> $fileName,
+                'text'	=> $fileName, //@todo проверить в медиа библиотеке и подгрузить текст/alt если есть
                 'image' => JURI::base().$imagesPath.$fileName,
             );
         }
