@@ -44,10 +44,20 @@ $domModuleWrapperId = 'jaw-slider-wrapper-'.$module->id;
 $domModuleId = 'jaw-slider-'.$module->id;
 
 $doc = JFactory::getDocument();
-jimport('jquery.framework');
-$doc->addScript('modules/mod_jawunislider/assets/jquery.mobile.customized.min.js', 'text/javascript');
-$doc->addScript('modules/mod_jawunislider/assets/jquery.easing.1.3.js', 'text/javascript');
-$doc->addScript('modules/mod_jawunislider/assets/jawunislider.js', 'text/javascript');
+
+if(version_compare(JVERSION, '3.0', 'ge')) {
+    jimport('jquery.framework');
+} else {
+    if(!JFactory::getApplication()->get('jquery')){
+        JFactory::getApplication()->set('jquery',true);
+        $document = JFactory::getDocument();
+        $document->addScript('//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js');
+    }
+}
+
+$doc->addScript(JURI::root().'modules/mod_jawunislider/assets/jquery.mobile.customized.min.js', 'text/javascript');
+$doc->addScript(JURI::root().'modules/mod_jawunislider/assets/jquery.easing.1.3.js', 'text/javascript');
+$doc->addScript(JURI::root().'modules/mod_jawunislider/assets/jawunislider.js', 'text/javascript');
 
 // load used slideshow
 switch($slideShow) {
