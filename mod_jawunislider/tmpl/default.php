@@ -50,14 +50,22 @@ if(version_compare(JVERSION, '3.0', 'ge')) {
 } else {
     if(!JFactory::getApplication()->get('jquery')){
         JFactory::getApplication()->set('jquery',true);
-        $document = JFactory::getDocument();
-        $document->addScript('//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js');
+        $doc->addScript('//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js', 'text/javascript');
     }
 }
 
-$doc->addScript(JURI::root().'modules/mod_jawunislider/assets/jquery.mobile.customized.min.js', 'text/javascript');
-$doc->addScript(JURI::root().'modules/mod_jawunislider/assets/jquery.easing.1.3.js', 'text/javascript');
-$doc->addScript(JURI::root().'modules/mod_jawunislider/assets/jawunislider.js', 'text/javascript');
+if(!JFactory::getApplication()->get('jquery.mobile')){
+    JFactory::getApplication()->set('jquery.mobile',true);
+    $doc->addStyleSheet('//ajax.googleapis.com/ajax/libs/jquerymobile/1.4.2/jquery.mobile.min.css');
+    $doc->addScript('//ajax.googleapis.com/ajax/libs/jquerymobile/1.4.2/jquery.mobile.min.js', 'text/javascript');
+}
+
+if(!JFactory::getApplication()->get('jquery.easing')){
+    JFactory::getApplication()->set('jquery.easing',true);
+    $doc->addScript(JURI::root().'modules/mod_jawunislider/assets/jquery.easing.1.3.js', 'text/javascript');
+}
+
+//$doc->addScript(JURI::root().'modules/mod_jawunislider/assets/jawunislider.js', 'text/javascript');
 
 // load used slideshow
 switch($slideShow) {
