@@ -5,12 +5,12 @@
  *
  * PHP Version  5.3.13
  *
- * @package 
+ * @package
  * @category
  * @plugin URI
  * @copyright   2014, Vadim Pshentsov. All Rights Reserved.
  * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache License, Version 2.0
- * @author      Vadim Pshentsov <pshentsoff@gmail.com> 
+ * @author      Vadim Pshentsov <pshentsoff@gmail.com>
  * @link        http://pshentsoff.ru Author's homepage
  * @link        http://blog.pshentsoff.ru Author's blog
  *
@@ -57,15 +57,13 @@ if(version_compare(JVERSION, '3.0', 'ge')) {
 if(!JFactory::getApplication()->get('jquery.mobile')){
     JFactory::getApplication()->set('jquery.mobile',true);
     $doc->addStyleSheet('//ajax.googleapis.com/ajax/libs/jquerymobile/1.4.2/jquery.mobile.min.css');
-    $doc->addScript('//ajax.googleapis.com/ajax/libs/jquerymobile/1.4.2/jquery.mobile.min.js', 'text/javascript');
+    $doc->addScript('http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js', 'text/javascript');
 }
 
-if(!JFactory::getApplication()->get('jquery.easing')){
-    JFactory::getApplication()->set('jquery.easing',true);
-    $doc->addScript(JURI::root().'modules/mod_jawunislider/assets/jquery.easing.1.3.js', 'text/javascript');
+if(!JFactory::getApplication()->get('jquery.ui')){
+    JFactory::getApplication()->set('jquery.ui',true);
+    $doc->addScript('http://code.jquery.com/ui/1.10.4/jquery-ui.min.js', 'text/javascript');
 }
-
-//$doc->addScript(JURI::root().'modules/mod_jawunislider/assets/jawunislider.js', 'text/javascript');
 
 // load used slideshow
 switch($slideShow) {
@@ -124,11 +122,11 @@ $timthumb = JURI::base() . 'modules/mod_jawunislider/libs/timthumb.php?a=c&q=99&
 
 <script>
     $(document).ready(function ($) {
-<?php
-switch($slideShow) {
-    case 'camera':
-    default: {
-?>
+        <?php
+        switch($slideShow) {
+            case 'camera':
+            default: {
+        ?>
         $('#<?php echo $domModuleWrapperId; ?>').camera({
             loader				: '<?php echo $loaderStyle; ?>',
             barDirection		: '<?php echo $barDirection; ?>',
@@ -146,9 +144,9 @@ switch($slideShow) {
             time				: <?php echo $duration; ?>,
             transPeriod			: <?php echo $transPeriod; ?>
         });
-<?php
-    }
-}
-?>
+        <?php
+            }
+        }
+        ?>
     });
 </script>
