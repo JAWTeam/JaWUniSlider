@@ -71,8 +71,8 @@ if(!JFactory::getApplication()->get('jquery.easing')){
 switch($slideShow) {
     case 'camera': {}
     default: {
-    $doc->addScript('modules/mod_jawunislider/assets/camera.js', 'text/javascript');
     $doc->addStyleSheet('modules/mod_jawunislider/assets/camera.css');
+    $doc->addScript('modules/mod_jawunislider/assets/camera.js', 'text/javascript');
 
     // slideshow-dependent params
     $loaderStyle		= $params->get('loaderStyle', 'pie');
