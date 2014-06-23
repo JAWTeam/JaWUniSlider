@@ -123,13 +123,13 @@ $timthumb = JURI::base() . 'modules/mod_jawunislider/libs/timthumb.php?a=c&q=99&
 </div>
 
 <script>
-    jQuery(document).ready(function ($) {
+    $(document).ready(function ($) {
 <?php
 switch($slideShow) {
     case 'camera':
     default: {
 ?>
-        jQuery('#<?php echo $domModuleWrapperId; ?>').camera({
+        $('#<?php echo $domModuleWrapperId; ?>').camera({
             loader				: '<?php echo $loaderStyle; ?>',
             barDirection		: '<?php echo $barDirection; ?>',
             barPosition			: '<?php echo $barPosition; ?>',
