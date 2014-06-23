@@ -44,6 +44,7 @@ $domModuleWrapperId = 'jaw-slider-wrapper-'.$module->id;
 $domModuleId = 'jaw-slider-'.$module->id;
 
 $doc = JFactory::getDocument();
+jimport('jquery.framework');
 $doc->addScript('modules/mod_jawunislider/assets/jquery.mobile.customized.min.js', 'text/javascript');
 $doc->addScript('modules/mod_jawunislider/assets/jquery.easing.1.3.js', 'text/javascript');
 $doc->addScript('modules/mod_jawunislider/assets/jawunislider.js', 'text/javascript');
