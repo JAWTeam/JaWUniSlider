@@ -109,8 +109,11 @@ $timthumb = JURI::base() . 'modules/mod_jawunislider/libs/timthumb.php?a=c&q=99&
         <?php foreach($slides as $slide) : ?>
             <?php
             $image = $slide->image;
-            $bigImage   = $image;
-            if($resizeImage) $bigImage = $timthumb . '&w=' . $imageWidth . '&h=' . $imageHeight . '&src=' . $image;
+            if($resizeImage) {
+                $bigImage = $timthumb . '&w=' . $imageWidth . '&h=' . $imageHeight . '&src=' . $image;
+            } else {
+                $bigImage   = $image;
+            }
             $thumbImage = $timthumb . '&w=' . $thumbnailWidth . '&h=' . $thumbnailHeight . '&src=' . $image;
             ?>
             <div data-thumb="<?php echo $thumbImage; ?>" data-src="<?php echo $bigImage; ?>">

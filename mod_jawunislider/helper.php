@@ -5,12 +5,12 @@
  *
  * PHP Version  5.3.13
  *
- * @package 
+ * @package
  * @category
  * @plugin URI
  * @copyright   2014, Vadim Pshentsov. All Rights Reserved.
  * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache License, Version 2.0
- * @author      Vadim Pshentsov <pshentsoff@gmail.com> 
+ * @author      Vadim Pshentsov <pshentsoff@gmail.com>
  * @link        http://pshentsoff.ru Author's homepage
  * @link        http://blog.pshentsoff.ru Author's blog
  *
@@ -30,8 +30,10 @@ class modJaWUniSliderHelper {
         if(!JFolder::exists($imagesPath)) {
 
             $first = substr($imagesPath, 0, 1);
-            $ds = ($first == "\\" || $first == "/") ? '' : DS;
-            $rootPath = JPATH_ROOT.$ds.$imagesPath;
+            if($first == "\\" || $first == "/") {
+                $imagesPath = substr($imagesPath, 1);
+            }
+            $rootPath = JPATH_ROOT.'/'.$imagesPath;
 
             if(!JFolder::exists($rootPath)) {
                 return false;
@@ -54,11 +56,11 @@ class modJaWUniSliderHelper {
 
         foreach($files as $fileName){
             $slides[] = (object) array(
-                'path' => $imagesPath.DS,
-                'rootPath' => $rootPath.DS,
+                'path' => $imagesPath.'/',
+                'rootPath' => $rootPath.'/',
                 'fileName'	=> $fileName,
                 'text'	=> $fileName, //@todo проверить в медиа библиотеке и подгрузить текст/alt если есть
-                'image' => JURI::base().$imagesPath.DS.$fileName,
+                'image' => JURI::base().$imagesPath.'/'.$fileName,
             );
         }
         return $slides;
