@@ -50,19 +50,18 @@ if(version_compare(JVERSION, '3.0', 'ge')) {
 } else {
     if(!JFactory::getApplication()->get('jquery')){
         JFactory::getApplication()->set('jquery',true);
-        $doc->addScript('//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js', 'text/javascript');
+        $doc->addScript('http://code.jquery.com/jquery-1.11.1.min.js');
     }
-}
-
-if(!JFactory::getApplication()->get('jquery.mobile')){
-    JFactory::getApplication()->set('jquery.mobile',true);
-    $doc->addStyleSheet('//ajax.googleapis.com/ajax/libs/jquerymobile/1.4.2/jquery.mobile.min.css');
-    $doc->addScript('http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js', 'text/javascript');
 }
 
 if(!JFactory::getApplication()->get('jquery.ui')){
     JFactory::getApplication()->set('jquery.ui',true);
-    $doc->addScript('http://code.jquery.com/ui/1.10.4/jquery-ui.min.js', 'text/javascript');
+    $doc->addScript('http://code.jquery.com/ui/1.10.4/jquery-ui.min.js');
+}
+
+if(!JFactory::getApplication()->get('jquery.mobile')){
+    JFactory::getApplication()->set('jquery.mobile',true);
+    $doc->addScript('http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js');
 }
 
 // load used slideshow
@@ -70,7 +69,7 @@ switch($slideShow) {
     case 'camera': {}
     default: {
     $doc->addStyleSheet('modules/mod_jawunislider/assets/camera.css');
-    $doc->addScript('modules/mod_jawunislider/assets/camera.js', 'text/javascript');
+    $doc->addScript('modules/mod_jawunislider/assets/camera.js');
 
     // slideshow-dependent params
     $loaderStyle		= $params->get('loaderStyle', 'pie');
@@ -105,22 +104,20 @@ $timthumb = JURI::base() . 'modules/mod_jawunislider/libs/timthumb.php?a=c&q=99&
 </style>
 
 <div id="<?php echo $domModuleWrapperId; ?>" class="<?php echo $slideShowWrapperClass; ?>">
-    <div id="<?php echo $domModuleId; ?>" class="<?php echo $slideShowSliderClass; ?>">
-        <?php foreach($slides as $slide) : ?>
-            <?php
-            $image = $slide->image;
-            if($resizeImage) {
-                $bigImage = $timthumb . '&w=' . $imageWidth . '&h=' . $imageHeight . '&src=' . $image;
-            } else {
-                $bigImage   = $image;
-            }
-            $thumbImage = $timthumb . '&w=' . $thumbnailWidth . '&h=' . $thumbnailHeight . '&src=' . $image;
-            ?>
-            <div data-thumb="<?php echo $thumbImage; ?>" data-src="<?php echo $bigImage; ?>">
-                <?php echo ($displayCaptions) ? $slide->text : ''; ?>
-            </div>
-        <?php endforeach; ?>
-    </div>
+    <?php foreach($slides as $slide) : ?>
+        <?php
+        $image = $slide->image;
+        if($resizeImage) {
+            $bigImage = $timthumb . '&w=' . $imageWidth . '&h=' . $imageHeight . '&src=' . $image;
+        } else {
+            $bigImage   = $image;
+        }
+        $thumbImage = $timthumb . '&w=' . $thumbnailWidth . '&h=' . $thumbnailHeight . '&src=' . $image;
+        ?>
+        <div data-thumb="<?php echo $thumbImage; ?>" data-src="<?php echo $bigImage; ?>">
+            <?php echo ($displayCaptions) ? $slide->text : ''; ?>
+        </div>
+    <?php endforeach; ?>
 </div>
 
 <script>
