@@ -12,10 +12,11 @@ J@W Universal Slider module for Joomla! for programmers. Minimum preset params. 
 
 ### Useful links:
 
-#### Version 0.0.17-dev
-#### Last work version
+#### Version 0.0.17
+#### Last work version 0.0.17
 #### Last stable version
 
 ### Versions history
 
-#### version
+#### version 0.0.17
+-   Camera jQuery slideshow & template
