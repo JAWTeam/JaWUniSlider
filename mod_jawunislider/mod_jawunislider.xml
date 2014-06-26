@@ -5,11 +5,14 @@
     <authorEmail>pshentsoff@yandex.ru</authorEmail>
     <authorUrl>http://pshentsoff.ru</authorUrl>
     <creationDate>19.06.2014</creationDate>
-    <version>0.0.17</version>
+    <version>0.0.18</version>
     <copyright>Copyright (C) 2014 All rights reserved.</copyright>
     <license>GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html</license>
     <description>
         <![CDATA[
+                <div style="font-style: italic;">
+                    J@W Universal Slider module for Joomla! for programmers. Minimum preset params. Maximum templates, java script and css flexibilities.
+                </div>
         ]]>
     </description>
 

@@ -59,11 +59,12 @@ if(!JFactory::getApplication()->get('jquery.ui')){
     $doc->addScript('http://code.jquery.com/ui/1.10.4/jquery-ui.min.js');
 }
 
-if(!JFactory::getApplication()->get('jquery.mobile')){
-    JFactory::getApplication()->set('jquery.mobile',true);
-    $doc->addScript('http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js');
-}
-
+//@todo check & on/off mobile/tablet support
+//if(!JFactory::getApplication()->get('jquery.mobile')){
+//    JFactory::getApplication()->set('jquery.mobile',true);
+//    $doc->addScript('http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js');
+//}
+//
 // load used slideshow
 switch($slideShow) {
     case 'camera': {}
