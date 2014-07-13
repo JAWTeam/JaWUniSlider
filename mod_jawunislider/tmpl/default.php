@@ -69,8 +69,8 @@ if(!JFactory::getApplication()->get('jquery.ui')){
 switch($slideShow) {
     case 'camera': {}
     default: {
-    $doc->addStyleSheet('modules/mod_jawunislider/assets/camera.css');
     $doc->addScript('modules/mod_jawunislider/assets/camera.js');
+    $doc->addStyleSheet('modules/mod_jawunislider/assets/camera.css');
 
     // slideshow-dependent params
     $loaderStyle		= $params->get('loaderStyle', 'pie');
@@ -121,33 +121,43 @@ $timthumb = JURI::base() . 'modules/mod_jawunislider/libs/timthumb.php?a=c&q=99&
     <?php endforeach; ?>
 </div>
 
-<script>
-    $(document).ready(function ($) {
-        <?php
-        switch($slideShow) {
-            case 'camera':
-            default: {
-        ?>
-        $('#<?php echo $domModuleWrapperId; ?>').camera({
-            loader				: '<?php echo $loaderStyle; ?>',
-            barDirection		: '<?php echo $barDirection; ?>',
-            barPosition			: '<?php echo $barPosition; ?>',
-            fx					: '<?php echo $fx; ?>',
-            piePosition			: '<?php echo $piePosition; ?>',
-            height				: '<?php echo $moduleHeight; ?>',
-            hover				: <?php echo ($pauseHover) ? 'true' : 'false'; ?>,
-            navigation			: <?php echo ($navigation) ? 'true' : 'false'; ?>,
-            navigationHover		: <?php echo ($navigationHover) ? 'true' : 'false'; ?>,
-            pagination			: <?php echo ($pagination) ? 'true' : 'false'; ?>,
-            playPause			: <?php echo ($playPause) ? 'true' : 'false'; ?>,
-            pauseOnClick		: <?php echo ($pauseOnClick) ? 'true' : 'false'; ?>,
-            thumbnails			: <?php echo ($thumbnails) ? 'true' : 'false'; ?>,
-            time				: <?php echo $duration; ?>,
-            transPeriod			: <?php echo $transPeriod; ?>
+<?php
+ob_start();
+if($params->get('jQueryNoConflict', 0)) {
+    $jQuery = 'jQuery';
+    echo 'jQuery.noConflict();';
+} else {
+    $jQuery = '$';
+}
+?>
+<?php echo $jQuery; ?>(function(<?php echo $jQuery; ?>) {
+<?php
+switch($slideShow) {
+    case 'camera':
+    default: {
+    ?>
+    <?php echo $jQuery; ?>('#<?php echo $domModuleWrapperId; ?>').camera({
+        loader				: '<?php echo $loaderStyle; ?>',
+        barDirection		: '<?php echo $barDirection; ?>',
+        barPosition			: '<?php echo $barPosition; ?>',
+        fx					: '<?php echo $fx; ?>',
+        piePosition			: '<?php echo $piePosition; ?>',
+        height				: '<?php echo $moduleHeight; ?>',
+        hover				: <?php echo ($pauseHover) ? 'true' : 'false'; ?>,
+        navigation			: <?php echo ($navigation) ? 'true' : 'false'; ?>,
+        navigationHover		: <?php echo ($navigationHover) ? 'true' : 'false'; ?>,
+        pagination			: <?php echo ($pagination) ? 'true' : 'false'; ?>,
+        playPause			: <?php echo ($playPause) ? 'true' : 'false'; ?>,
+        pauseOnClick		: <?php echo ($pauseOnClick) ? 'true' : 'false'; ?>,
+        thumbnails			: <?php echo ($thumbnails) ? 'true' : 'false'; ?>,
+        time				: <?php echo $duration; ?>,
+        transPeriod			: <?php echo $transPeriod; ?>
         });
-        <?php
-            }
-        }
-        ?>
-    });
-</script>
+    <?php
+    }
+}
+?>
+});
+<?php
+$jsSliderInit = ob_get_clean();
+$doc->addScriptDeclaration($jsSliderInit);
